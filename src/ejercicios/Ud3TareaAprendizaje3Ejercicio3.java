@@ -32,10 +32,11 @@ public class Ud3TareaAprendizaje3Ejercicio3 {
                 if (resultado == 1) {
                     // Obtener nombre del país
                     String consulta2 = "Select name from country where code = ?";
-                    try (PreparedStatement prStatement2 = miConexion.prepareStatement(consulta2);
-                         ResultSet miResultSet = prStatement2.executeQuery()) {
+                    try (PreparedStatement prStatement2 = miConexion.prepareStatement(consulta2)){
+                    		 prStatement2.setString(1, codpais);
+                    		ResultSet miResultSet = prStatement2.executeQuery();
 
-                        prStatement2.setString(1, codpais);
+                       
                         if (miResultSet.next()) {
                             String nombrepais = miResultSet.getString(1);
                             System.out.println("Se ha modificado correctamente la población de " + nombrepais);
